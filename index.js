@@ -14,6 +14,10 @@ function divide(num1, num2) {
 
 }
 
+function operate(num1, num2, operator) {
+
+}
+
 const num1 = 5;
 const num2 = 5;
 const operator = "+";
