@@ -1,0 +1,13 @@
+.container {
+  background: green;
+  padding: 15px;
+}
+
+.container__display {
+  background: lightblue;
+}
+
+.container__buttons {
+  background: beige;
+  padding: 10px;
+}
