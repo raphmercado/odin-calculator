@@ -18,9 +18,20 @@ function operate(num1, num2, operator) {
 
 }
 
-const nums1 = document.querySelectorAll(".num");
-nums1.forEach(num => num.addEventListener("click", e => console.log(e.target.value)));
+const firstNum = document.querySelectorAll(".num");
+let firstNumArray = [];
+firstNum.forEach(num => num.addEventListener("click", e => {
+  firstNumArray.push(e.target.value);
+  const finalFirstNum = parseInt(firstNumArray.join(""));
+  console.log(finalFirstNum);
+}));
 
-const nums2 = 5;
-const operators = document.querySelectorAll(".operator");
-operators.forEach(operator => operator.addEventListener("click", e => console.log(e.target.value)));
+// const operators = document.querySelectorAll(".operator");
+// let isClicked = false;
+// operators.forEach(operator => operator.addEventListener("click", e => {
+//   //console.log(e.target.value);
+//   operator = e.target.value;
+//   console.log(operator);
+// }, { once: true }));
+
+// const nums2 = 5;
