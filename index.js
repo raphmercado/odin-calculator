@@ -15,31 +15,30 @@ function divide(num1, num2) {
 }
 
 function operate() {
-  console.log(firstNumArray);
-  console.log(secondNumArray);
+  console.log(`${num1} ${operator} ${num2} = sample`);
   equals.removeEventListener("click", operate);
 }
 
 function getFirstNum(e) {
   firstNumArray.push(e.target.value);
-  const finalNum = parseInt(firstNumArray.join(""));
+  num1 = parseInt(firstNumArray.join(""));
   operators.forEach(operator => enable(operator));
   enable(clear);
-  console.log(finalNum);
+  console.log(num1);
   console.log(isClicked);
 }
 
 function getSecondNum(e) {
   secondNumArray.push(e.target.value);
-  const finalNum = parseInt(secondNumArray.join(""));
+  num2 = parseInt(secondNumArray.join(""));
   enable(equals);
-  console.log(finalNum);
+  console.log(num2);
   console.log(isClicked);
   equals.addEventListener("click", operate);
 }
 
 function getOperator(e) {
-  console.log(e.target.value);
+  operator = e.target.value;
   isClicked = true;
   if (isClicked === true) {
     firstNum.forEach(num => num.removeEventListener("click", getFirstNum));
@@ -62,6 +61,9 @@ const equals = document.querySelector(".equals");
 const clear = document.querySelector(".clear");
 let firstNumArray = [];
 let secondNumArray = [];
+let num1;
+let num2;
+let operator;
 let isClicked = false;
 // EventListener for first number
 firstNum.forEach(num => num.addEventListener("click", getFirstNum));
