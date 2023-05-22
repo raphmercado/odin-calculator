@@ -47,6 +47,7 @@ function getSecondNum(e) {
   enable(equals);
   console.log(num2);
   console.log(isClicked);
+  secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
   equals.addEventListener("click", operate);
 }
 
