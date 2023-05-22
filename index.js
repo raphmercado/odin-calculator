@@ -14,8 +14,10 @@ function divide(num1, num2) {
 
 }
 
-function operate(num1, num2, operator) {
-
+function operate() {
+  console.log(firstNumArray);
+  console.log(secondNumArray);
+  equals.removeEventListener("click", operate);
 }
 
 function getFirstNum(e) {
@@ -33,7 +35,7 @@ function getSecondNum(e) {
   enable(equals);
   console.log(finalNum);
   console.log(isClicked);
-  equals.addEventListener("click", getEquals);
+  equals.addEventListener("click", operate);
 }
 
 function getOperator(e) {
@@ -47,13 +49,6 @@ function getOperator(e) {
     // EventListener for second number
     secondNum.forEach(num => num.addEventListener("click", getSecondNum));
   }
-}
-
-function getEquals(e) {
-  console.log(firstNumArray);
-  console.log(secondNumArray);
-  equals.removeEventListener("click", getEquals);
-
 }
 
 function enable(element) {
