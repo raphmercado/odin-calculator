@@ -3,20 +3,19 @@ function add(num1, num2) {
 }
 
 function subtract(num1, num2) {
-
+  alert(`${num1} ${operator} ${num2} = ${num1 - num2}`);
 }
 
 function multiply(num1, num2) {
-
+  alert(`${num1} ${operator} ${num2} = ${num1 * num2}`);
 }
 
 function divide(num1, num2) {
-
+  alert(`${num1} ${operator} ${num2} = ${num1 / num2}`);
 }
 
 function operate() {
   equals.removeEventListener("click", operate);
-
   switch (operator) {
     case "+":
       add(num1, num2);
@@ -31,7 +30,6 @@ function operate() {
       divide(num1, num2);
       break;
   }
-
 }
 
 function getFirstNum(e) {
