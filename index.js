@@ -68,18 +68,22 @@ function enable(element) {
   element.disabled = false;
 }
 
-const firstNum = document.querySelectorAll(".num");
-const operators = document.querySelectorAll(".operator");
-const secondNum = document.querySelectorAll(".num");
-const equals = document.querySelector(".equals");
-const clear = document.querySelector(".clear");
-let firstNumArray = [];
-let secondNumArray = [];
-let num1;
-let num2;
-let operator;
-let isClicked = false;
-// EventListener for first number
-firstNum.forEach(num => num.addEventListener("click", getFirstNum));
-// EventListener for operator
-operators.forEach(operator => operator.addEventListener("click", getOperator));
+function main() {
+  const firstNum = document.querySelectorAll(".num");
+  const operators = document.querySelectorAll(".operator");
+  const secondNum = document.querySelectorAll(".num");
+  const equals = document.querySelector(".equals");
+  const clear = document.querySelector(".clear");
+  let firstNumArray = [];
+  let secondNumArray = [];
+  let num1;
+  let num2;
+  let operator;
+  let isClicked = false;
+  // EventListener for first number
+  firstNum.forEach(num => num.addEventListener("click", getFirstNum));
+  // EventListener for operator
+  operators.forEach(operator => operator.addEventListener("click", getOperator));
+}
+
+main();
