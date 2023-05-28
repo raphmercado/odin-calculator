@@ -1,3 +1,5 @@
+// NEXT TODO: Add function to clear values
+
 const firstNum = document.querySelectorAll(".num");
 const operators = document.querySelectorAll(".operator");
 const secondNum = document.querySelectorAll(".num");
@@ -23,6 +25,8 @@ function add() {
   values.operator = "";
   values.isClicked = "";
   console.log("Resetting values...\nDone.");
+  operators.forEach(operator => disable(operator));
+  disable(equals);
   main();
 }
 
@@ -36,6 +40,8 @@ function subtract() {
   values.operator = "";
   values.isClicked = "";
   console.log("Resetting values...\nDone.");
+  operators.forEach(operator => disable(operator));
+  disable(equals);
   main();
 }
 
@@ -49,6 +55,8 @@ function multiply() {
   values.operator = "";
   values.isClicked = "";
   console.log("Resetting values...\nDone.");
+  operators.forEach(operator => disable(operator));
+  disable(equals);
   main();
 }
 
@@ -62,6 +70,8 @@ function divide() {
   values.operator = "";
   values.isClicked = "";
   console.log("Resetting values...\nDone.");
+  operators.forEach(operator => disable(operator));
+  disable(equals);
   main();
 }
 
@@ -119,6 +129,10 @@ function getOperator(e) {
 
 function enable(element) {
   element.disabled = false;
+}
+
+function disable(element) {
+  element.disabled = true;
 }
 
 function main() {
