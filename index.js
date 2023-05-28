@@ -1,64 +1,117 @@
-function add(num1, num2) {
-  alert(`${num1} ${operator} ${num2} = ${num1 + num2}`);
+const firstNum = document.querySelectorAll(".num");
+const operators = document.querySelectorAll(".operator");
+const secondNum = document.querySelectorAll(".num");
+const equals = document.querySelector(".equals");
+const clear = document.querySelector(".clear");
+
+const values = {
+  firstNumArray: [],
+  secondNumArray: [],
+  num1: 0,
+  num2: 0,
+  operator: "",
+  isClicked: ""
+};
+
+function add() {
+  secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
+  alert(`${values.num1} ${values.operator} ${values.num2} = ${values.num1 + values.num2}`);
+  values.firstNumArray = [];
+  values.secondNumArray = [];
+  values.num1 = 0;
+  values.num2 = 0;
+  values.operator = "";
+  values.isClicked = "";
+  console.log("Resetting values...\nDone.");
+  main();
 }
 
-function subtract(num1, num2) {
-  alert(`${num1} ${operator} ${num2} = ${num1 - num2}`);
+function subtract() {
+  secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
+  alert(`${values.num1} ${values.operator} ${values.num2} = ${values.num1 - values.num2}`);
+  values.firstNumArray = [];
+  values.secondNumArray = [];
+  values.num1 = 0;
+  values.num2 = 0;
+  values.operator = "";
+  values.isClicked = "";
+  console.log("Resetting values...\nDone.");
+  main();
 }
 
-function multiply(num1, num2) {
-  alert(`${num1} ${operator} ${num2} = ${num1 * num2}`);
+function multiply() {
+  secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
+  alert(`${values.num1} ${values.operator} ${values.num2} = ${values.num1 * values.num2}`);
+  values.firstNumArray = [];
+  values.secondNumArray = [];
+  values.num1 = 0;
+  values.num2 = 0;
+  values.operator = "";
+  values.isClicked = "";
+  console.log("Resetting values...\nDone.");
+  main();
 }
 
-function divide(num1, num2) {
-  alert(`${num1} ${operator} ${num2} = ${num1 / num2}`);
+function divide() {
+  secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
+  alert(`${values.num1} ${values.operator} ${values.num2} = ${values.num1 / values.num2}`);
+  values.firstNumArray = [];
+  values.secondNumArray = [];
+  values.num1 = 0;
+  values.num2 = 0;
+  values.operator = "";
+  values.isClicked = "";
+  console.log("Resetting values...\nDone.");
+  main();
 }
 
 function operate() {
   equals.removeEventListener("click", operate);
-  switch (operator) {
+  switch (values.operator) {
     case "+":
-      add(num1, num2);
+      add();
       break;
     case "-":
-      subtract(num1, num2);
+      subtract();
       break;
     case "×":
-      multiply(num1, num2);
+      multiply();
       break;
     case "÷":
-      divide(num1, num2);
+      divide();
       break;
   }
 }
 
 function getFirstNum(e) {
-  firstNumArray.push(e.target.value);
-  num1 = parseInt(firstNumArray.join(""));
+  values.firstNumArray.push(e.target.value);
+  values.num1 = parseInt(values.firstNumArray.join(""));
   operators.forEach(operator => enable(operator));
   enable(clear);
-  console.log(num1);
-  console.log(isClicked);
+  console.log(values.num1);
+  console.log(values.isClicked);
 }
 
 function getSecondNum(e) {
-  secondNumArray.push(e.target.value);
-  num2 = parseInt(secondNumArray.join(""));
-  enable(equals);
-  console.log(num2);
-  console.log(isClicked);
-  secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
-  equals.addEventListener("click", operate);
+  if (isClicked === "secondNum") {
+    values.secondNumArray.push(e.target.value);
+    values.num2 = parseInt(values.secondNumArray.join(""));
+    enable(equals);
+    console.log(values.num2);
+    console.log(isClicked);
+    equals.addEventListener("click", operate);
+  }
 }
 
 function getOperator(e) {
-  operator = e.target.value;
-  isClicked = true;
-  if (isClicked === true) {
+  values.operator = e.target.value;
+  isClicked = "operator";
+  console.log(values.operator);
+  if (isClicked === "operator") {
     firstNum.forEach(num => num.removeEventListener("click", getFirstNum));
     console.log("Stopped. Next: Second num");
     operators.forEach(operator => operator.removeEventListener("click", getOperator));
-    isClicked = false;
+    isClicked = "secondNum";
     // EventListener for second number
     secondNum.forEach(num => num.addEventListener("click", getSecondNum));
   }
@@ -69,17 +122,6 @@ function enable(element) {
 }
 
 function main() {
-  const firstNum = document.querySelectorAll(".num");
-  const operators = document.querySelectorAll(".operator");
-  const secondNum = document.querySelectorAll(".num");
-  const equals = document.querySelector(".equals");
-  const clear = document.querySelector(".clear");
-  let firstNumArray = [];
-  let secondNumArray = [];
-  let num1;
-  let num2;
-  let operator;
-  let isClicked = false;
   // EventListener for first number
   firstNum.forEach(num => num.addEventListener("click", getFirstNum));
   // EventListener for operator
