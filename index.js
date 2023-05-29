@@ -98,30 +98,31 @@ function getFirstNum(e) {
   values.num1 = parseInt(values.firstNumArray.join(""));
   operators.forEach(operator => enable(operator));
   enable(clear);
+  values.isClicked = "firstNum";
   console.log(values.num1);
   console.log(values.isClicked);
 }
 
 function getSecondNum(e) {
-  if (isClicked === "secondNum") {
+  if (values.isClicked === "secondNum") {
     values.secondNumArray.push(e.target.value);
     values.num2 = parseInt(values.secondNumArray.join(""));
     enable(equals);
     console.log(values.num2);
-    console.log(isClicked);
+    console.log(values.isClicked);
     equals.addEventListener("click", operate);
   }
 }
 
 function getOperator(e) {
   values.operator = e.target.value;
-  isClicked = "operator";
+  values.isClicked = "operator";
   console.log(values.operator);
-  if (isClicked === "operator") {
+  if (values.isClicked === "operator") {
     firstNum.forEach(num => num.removeEventListener("click", getFirstNum));
     console.log("Stopped. Next: Second num");
     operators.forEach(operator => operator.removeEventListener("click", getOperator));
-    isClicked = "secondNum";
+    values.isClicked = "secondNum";
     // EventListener for second number
     secondNum.forEach(num => num.addEventListener("click", getSecondNum));
   }
