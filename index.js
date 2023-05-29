@@ -1,6 +1,5 @@
 // NEXT TODOS: 
 // Create logic to clear values
-// Create logic to display result
 // Try to remove values.isClicked to test if logic still works
 
 const firstNum = document.querySelectorAll(".num");
@@ -97,6 +96,18 @@ function operate() {
   }
 }
 
+function clearValues() {
+  values.firstNumArray = [];
+  values.secondNumArray = [];
+  values.num1 = 0;
+  values.num2 = 0;
+  values.operator = "";
+  values.isClicked = "";
+  result.textContent = "";
+  console.log(`firstNumArray: ${values.firstNumArray}\nnum1 ${values.num1}\nsecondNumArray: ${values.secondNumArray}\nnum2: ${values.num2}\noperator: ${values.operator}\nisClicked: ${values.isClicked}`);
+  main();
+}
+
 function getFirstNum(e) {
   values.firstNumArray.push(e.target.value);
   values.num1 = parseInt(values.firstNumArray.join(""));
@@ -148,6 +159,8 @@ function main() {
   firstNum.forEach(num => num.addEventListener("click", getFirstNum));
   // EventListener for operator
   operators.forEach(operator => operator.addEventListener("click", getOperator));
+  // EventListener for clear button
+  clear.addEventListener("click", clearValues);
 }
 
 main();
