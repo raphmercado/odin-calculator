@@ -1,10 +1,14 @@
-// NEXT TODO: Add function to clear values
+// NEXT TODOS: 
+// Create logic to clear values
+// Create logic to display result
+// Try to remove values.isClicked to test if logic still works
 
 const firstNum = document.querySelectorAll(".num");
 const operators = document.querySelectorAll(".operator");
 const secondNum = document.querySelectorAll(".num");
 const equals = document.querySelector(".equals");
 const clear = document.querySelector(".clear");
+const result = document.querySelector(".container__result");
 
 const values = {
   firstNumArray: [],
@@ -17,7 +21,7 @@ const values = {
 
 function add() {
   secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
-  alert(`${values.num1} ${values.operator} ${values.num2} = ${values.num1 + values.num2}`);
+  result.textContent = `${values.num1} ${values.operator} ${values.num2} = ${values.num1 + values.num2}`;
   values.firstNumArray = [];
   values.secondNumArray = [];
   values.num1 = 0;
@@ -32,7 +36,7 @@ function add() {
 
 function subtract() {
   secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
-  alert(`${values.num1} ${values.operator} ${values.num2} = ${values.num1 - values.num2}`);
+  result.textContent = `${values.num1} ${values.operator} ${values.num2} = ${values.num1 - values.num2}`;
   values.firstNumArray = [];
   values.secondNumArray = [];
   values.num1 = 0;
@@ -47,7 +51,7 @@ function subtract() {
 
 function multiply() {
   secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
-  alert(`${values.num1} ${values.operator} ${values.num2} = ${values.num1 * values.num2}`);
+  result.textContent = `${values.num1} ${values.operator} ${values.num2} = ${values.num1 * values.num2}`;
   values.firstNumArray = [];
   values.secondNumArray = [];
   values.num1 = 0;
@@ -62,7 +66,7 @@ function multiply() {
 
 function divide() {
   secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
-  alert(`${values.num1} ${values.operator} ${values.num2} = ${values.num1 / values.num2}`);
+  result.textContent = `${values.num1} ${values.operator} ${values.num2} = ${values.num1 / values.num2}`;
   values.firstNumArray = [];
   values.secondNumArray = [];
   values.num1 = 0;
@@ -99,6 +103,7 @@ function getFirstNum(e) {
   operators.forEach(operator => enable(operator));
   enable(clear);
   values.isClicked = "firstNum";
+  result.textContent = `${values.num1}`;
   console.log(values.num1);
   console.log(values.isClicked);
 }
@@ -108,6 +113,7 @@ function getSecondNum(e) {
     values.secondNumArray.push(e.target.value);
     values.num2 = parseInt(values.secondNumArray.join(""));
     enable(equals);
+    result.textContent = `${values.num1} ${values.operator} ${values.num2}`;
     console.log(values.num2);
     console.log(values.isClicked);
     equals.addEventListener("click", operate);
@@ -117,6 +123,7 @@ function getSecondNum(e) {
 function getOperator(e) {
   values.operator = e.target.value;
   values.isClicked = "operator";
+  result.textContent = `${values.num1} ${values.operator}`;
   console.log(values.operator);
   if (values.isClicked === "operator") {
     firstNum.forEach(num => num.removeEventListener("click", getFirstNum));
