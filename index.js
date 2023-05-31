@@ -1,5 +1,5 @@
 // NEXT TODOS: 
-// Create logic to clear values
+// Create variable to store result for later use
 // Try to remove values.isClicked to test if logic still works
 
 const firstNum = document.querySelectorAll(".num");
@@ -15,11 +15,13 @@ const values = {
   num1: 0,
   num2: 0,
   operator: "",
-  isClicked: ""
+  isClicked: "",
+  displayValue: 0
 };
 
 function add() {
   secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
+  values.displayValue = values.num1 + values.num2;
   result.textContent = `${values.num1} ${values.operator} ${values.num2} = ${values.num1 + values.num2}`;
   values.firstNumArray = [];
   values.secondNumArray = [];
@@ -27,6 +29,7 @@ function add() {
   values.num2 = 0;
   values.operator = "";
   values.isClicked = "";
+  console.log(values.displayValue);
   console.log("Resetting values...\nDone.");
   operators.forEach(operator => disable(operator));
   disable(equals);
@@ -162,6 +165,10 @@ function main() {
   operators.forEach(operator => operator.addEventListener("click", getOperator));
   // EventListener for clear button
   clear.addEventListener("click", clearValues);
+}
+
+function calculateWithCurrentResult() {
+
 }
 
 main();
