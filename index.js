@@ -1,5 +1,4 @@
 // NEXT TODOS: 
-// Create variable to store result for later use
 // Try to remove values.isClicked to test if logic still works
 
 const firstNum = document.querySelectorAll(".num");
@@ -16,7 +15,8 @@ const values = {
   num2: 0,
   operator: "",
   isClicked: "",
-  displayValue: 0
+  displayValue: 0,
+  isNewPair: false
 };
 
 function add() {
@@ -33,6 +33,8 @@ function add() {
   console.log("Resetting values...\nDone.");
   operators.forEach(operator => disable(operator));
   disable(equals);
+  values.isNewPair = true;
+  console.log(values.isNewPair);
   main();
 }
 
@@ -48,6 +50,8 @@ function subtract() {
   console.log("Resetting values...\nDone.");
   operators.forEach(operator => disable(operator));
   disable(equals);
+  values.isNewPair = true;
+  console.log(values.isNewPair);
   main();
 }
 
@@ -63,6 +67,8 @@ function multiply() {
   console.log("Resetting values...\nDone.");
   operators.forEach(operator => disable(operator));
   disable(equals);
+  values.isNewPair = true;
+  console.log(values.isNewPair);
   main();
 }
 
@@ -78,6 +84,8 @@ function divide() {
   console.log("Resetting values...\nDone.");
   operators.forEach(operator => disable(operator));
   disable(equals);
+  values.isNewPair = true;
+  console.log(values.isNewPair);
   main();
 }
 
@@ -106,8 +114,9 @@ function clearValues() {
   values.num2 = 0;
   values.operator = "";
   values.isClicked = "";
+  values.isNewPair = false;
   result.textContent = "";
-  console.log(`firstNumArray: ${values.firstNumArray}\nnum1 ${values.num1}\nsecondNumArray: ${values.secondNumArray}\nnum2: ${values.num2}\noperator: ${values.operator}\nisClicked: ${values.isClicked}`);
+  console.log(`firstNumArray: ${values.firstNumArray}\nnum1 ${values.num1}\nsecondNumArray: ${values.secondNumArray}\nnum2: ${values.num2}\noperator: ${values.operator}\nisClicked: ${values.isClicked}\nisNewPair: ${values.isNewPair}`);
   operators.forEach(operator => disable(operator));
   disable(clear);
   main();
@@ -160,16 +169,19 @@ function disable(element) {
 }
 
 function main() {
-  // EventListener for first number
-  firstNum.forEach(num => num.addEventListener("click", getFirstNum));
-  // EventListener for operator
-  operators.forEach(operator => operator.addEventListener("click", getOperator));
-  // EventListener for clear button
-  clear.addEventListener("click", clearValues);
-}
-
-function calculateWithCurrentResult() {
-
+  if (values.isNewPair === true) {
+    console.log("isNewPair true");
+    values.num1 = values.displayValue;
+    operators.forEach(operator => enable(operator));
+    operators.forEach(operator => operator.addEventListener("click", getOperator));
+  } else {
+    // EventListener for first number
+    firstNum.forEach(num => num.addEventListener("click", getFirstNum));
+    // EventListener for operator
+    operators.forEach(operator => operator.addEventListener("click", getOperator));
+    // EventListener for clear button
+    clear.addEventListener("click", clearValues);
+  }
 }
 
 main();
