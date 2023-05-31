@@ -108,6 +108,7 @@ function clearValues() {
   values.isClicked = "";
   result.textContent = "";
   console.log(`firstNumArray: ${values.firstNumArray}\nnum1 ${values.num1}\nsecondNumArray: ${values.secondNumArray}\nnum2: ${values.num2}\noperator: ${values.operator}\nisClicked: ${values.isClicked}`);
+  operators.forEach(operator => disable(operator));
   disable(clear);
   main();
 }
