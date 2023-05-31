@@ -42,6 +42,7 @@ function add() {
 
 function subtract() {
   secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
+  values.displayValue = values.num1 - values.num2;
   expression.textContent = `${values.num1} ${values.operator} ${values.num2}`;
   result.textContent = `${values.num1 - values.num2}`;
   values.firstNumArray = [];
@@ -60,6 +61,7 @@ function subtract() {
 
 function multiply() {
   secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
+  values.displayValue = values.num1 * values.num2;
   expression.textContent = `${values.num1} ${values.operator} ${values.num2}`;
   result.textContent = `${values.num1 * values.num2}`;
   values.firstNumArray = [];
@@ -78,6 +80,7 @@ function multiply() {
 
 function divide() {
   secondNum.forEach(num => num.removeEventListener("click", getSecondNum));
+  values.displayValue = values.num1 / values.num2;
   expression.textContent = `${values.num1} ${values.operator} ${values.num2}`;
   result.textContent = `${values.num1 / values.num2}`;
   values.firstNumArray = [];
