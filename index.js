@@ -147,6 +147,7 @@ function getSecondNum(e) {
     expression.textContent = `${values.num1} ${values.operator} ${values.num2}`;
     console.log(values.num2);
     console.log(values.isClicked);
+    operate();
     equals.addEventListener("click", operate);
   }
 }
